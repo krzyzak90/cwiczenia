@@ -1,0 +1,14 @@
+package org.lukasz.succes;
+
+public enum WeekDay {
+
+
+    MONDAY,
+    TUESDAY,
+    WEDNESDAY,
+    THURSDAY,
+    FRIDAY,
+    SATURDAY,
+    SUNDAY,
+
+}
