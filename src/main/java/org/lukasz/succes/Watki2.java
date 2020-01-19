@@ -1,13 +1,17 @@
 package org.lukasz.succes;
 
+import java.time.LocalTime;
+
 public class Watki2 {
     public static void main(String[] args) throws InterruptedException {
         // 1. zadanie do wykonania przez wątek
+        LocalTime czas = LocalTime.now();
         Runnable zadanie = () -> {
             try {
                 // każ wątkowi spać przez 5 s (5000 ms)
                 Thread.sleep(5000);
-                System.out.println("Wątek X: Cześć");
+                System.out.println("Wątek X: Cześć " + czas);
+
                 // śpij jeszcez raz
                 Thread.sleep(5000);
                 System.out.println("Wątek X: Kończę pracę");
@@ -28,11 +32,5 @@ public class Watki2 {
     }
 
 
-
-
-
-
-
-
 }
-}
+
