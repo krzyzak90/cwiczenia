@@ -1,17 +1,17 @@
 package tech.barny.sda.programowanie1;
 
-public class ListaWiązana {
+public class ListaWiązana<T> implements Kolejka<T>, Stos<T> {
 
-    private Węzeł pierwszyWęzeł;
-    private Węzeł ostatniWęzeł;
+    private Węzeł<T> pierwszyWęzeł;
+    private Węzeł<T> ostatniWęzeł;
     private int count;
 
-    public void add(String el) {
+    public void add(T el) {
         addLast(el);
     }
 
-    public void addLast(String el) {
-        Węzeł węzeł = new Węzeł(el, null, null);
+    public void addLast(T el) {
+        Węzeł<T> węzeł = new Węzeł(el, null, null);
 
         if (pierwszyWęzeł == null) {
             this.pierwszyWęzeł = węzeł;
@@ -24,8 +24,8 @@ public class ListaWiązana {
         count++;
     }
 
-    public void addFirst(String el) {
-        Węzeł węzeł = new Węzeł(el, null, null);
+    public void addFirst(T el) {
+        Węzeł<T> węzeł = new Węzeł(el, null, null);
         if (pierwszyWęzeł == null) {
             this.pierwszyWęzeł = węzeł;
             this.ostatniWęzeł = węzeł;
@@ -37,7 +37,7 @@ public class ListaWiązana {
         count++;
     }
 
-    public void add(int index, String el) {
+    public void add(int index, T el) {
         if (index < 0 || index > count) {
             throw new IndexOutOfBoundsException();
         }
@@ -46,31 +46,31 @@ public class ListaWiązana {
         } else if (index == count) {
             addLast(el);
         } else {
-            Węzeł poprzedniWęzeł = pierwszyWęzeł;
+            Węzeł<T> poprzedniWęzeł = pierwszyWęzeł;
             for (int i = 0; i < index - 1; i++) {
                 poprzedniWęzeł = poprzedniWęzeł.getNastępnyWęzeł();
             }
-            Węzeł następny = poprzedniWęzeł.getNastępnyWęzeł();
-            Węzeł węzeł = new Węzeł(el, poprzedniWęzeł, następny);
+            Węzeł<T> następny = poprzedniWęzeł.getNastępnyWęzeł();
+            Węzeł<T> węzeł = new Węzeł(el, poprzedniWęzeł, następny);
             poprzedniWęzeł.setNastępnyWęzeł(węzeł);
             następny.setPoprzedniWęzeł(węzeł);
             count++;
         }
     }
 
-    public String removeFirst() {
+    public T removeFirst() {
         if (pierwszyWęzeł == null) {
             throw new IndexOutOfBoundsException();
         }
         if (count == 1) {
-            Węzeł węzeł = pierwszyWęzeł;
+            Węzeł<T> węzeł = pierwszyWęzeł;
             pierwszyWęzeł = null;
             ostatniWęzeł = null;
             count--;
             return węzeł.getZawartość();
         } else {
-            Węzeł węzeł = pierwszyWęzeł;
-            Węzeł nowyPierwszy = pierwszyWęzeł.getNastępnyWęzeł();
+            Węzeł<T> węzeł = pierwszyWęzeł;
+            Węzeł<T> nowyPierwszy = pierwszyWęzeł.getNastępnyWęzeł();
             nowyPierwszy.setPoprzedniWęzeł(null);
             pierwszyWęzeł = nowyPierwszy;
 
@@ -79,25 +79,25 @@ public class ListaWiązana {
         }
     }
 
-    public String removeLast() {
+    public T removeLast() {
         if (count == 0) {
             throw new IndexOutOfBoundsException();
         } else if (count == 1) {
-            Węzeł węzeł = this.pierwszyWęzeł;
+            Węzeł<T> węzeł = this.pierwszyWęzeł;
             pierwszyWęzeł = null;
             ostatniWęzeł = null;
             count--;
             return węzeł.getZawartość();
         } else {
-            Węzeł węzeł = this.ostatniWęzeł;
-            Węzeł poprzedni = węzeł.getPoprzedniWęzeł();
+            Węzeł<T> węzeł = this.ostatniWęzeł;
+            Węzeł<T> poprzedni = węzeł.getPoprzedniWęzeł();
             poprzedni.setNastępnyWęzeł(null);
             count--;
             return węzeł.getZawartość();
         }
     }
 
-    public String remove(int index) {
+    public T remove(int index) {
         if (index < 0 || index >= count) {
             throw new IndexOutOfBoundsException();
         }
@@ -107,12 +107,12 @@ public class ListaWiązana {
         } else if (index == count - 1) {
             return removeLast();
         } else {
-            Węzeł poprzedni = pierwszyWęzeł;
+            Węzeł<T> poprzedni = pierwszyWęzeł;
             for (int i = 0; i < index - 1; i++) {
                 poprzedni = poprzedni.getNastępnyWęzeł();
             }
-            Węzeł usuwany = poprzedni.getNastępnyWęzeł();
-            Węzeł następny = usuwany.getNastępnyWęzeł();
+            Węzeł<T> usuwany = poprzedni.getNastępnyWęzeł();
+            Węzeł<T> następny = usuwany.getNastępnyWęzeł();
             poprzedni.setNastępnyWęzeł(następny);
             następny.setPoprzedniWęzeł(poprzedni);
             count--;
@@ -120,20 +120,20 @@ public class ListaWiązana {
         }
     }
 
-    public String getFirst() {
+    public T getFirst() {
         return pierwszyWęzeł.getZawartość();
     }
 
-    public String getLast() {
+    public T getLast() {
         return ostatniWęzeł.getZawartość();
     }
 
-    public String get(int index) {
+    public T get(int index) {
         if (index < 0 || index >= count) {
             throw new IndexOutOfBoundsException();
         }
 
-        Węzeł obecnyWęzeł = pierwszyWęzeł;
+        Węzeł<T> obecnyWęzeł = pierwszyWęzeł;
         for (int i = 0; i < index; i++) {
             obecnyWęzeł = pierwszyWęzeł.getNastępnyWęzeł();
         }
@@ -144,4 +144,7 @@ public class ListaWiązana {
         return count;
     }
 
+    public boolean isEmpty() {
+        return count == 0;
+    }
 }

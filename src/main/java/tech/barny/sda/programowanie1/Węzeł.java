@@ -1,39 +1,39 @@
 package tech.barny.sda.programowanie1;
 
-public class Węzeł {
-    private String zawartość;
-    private Węzeł poprzedniWęzeł;
-    private Węzeł następnyWęzeł;
+public class Węzeł<T> {
+    private T zawartość;
+    private Węzeł<T> poprzedniWęzeł;
+    private Węzeł<T> następnyWęzeł;
 
 
 
-    public Węzeł(String zawartość, Węzeł poprzedniWęzeł, Węzeł następnyWęzeł) {
+    public Węzeł(T zawartość, Węzeł<T> poprzedniWęzeł, Węzeł<T> następnyWęzeł) {
         this.zawartość = zawartość;
         this.poprzedniWęzeł = poprzedniWęzeł;
         this.następnyWęzeł = następnyWęzeł;
     }
 
-    public String getZawartość() {
+    public T getZawartość() {
         return zawartość;
     }
 
-    public void setZawartość(String zawartość) {
+    public void setZawartość(T zawartość) {
         this.zawartość = zawartość;
     }
 
-    public Węzeł getNastępnyWęzeł() {
+    public Węzeł<T> getNastępnyWęzeł() {
         return następnyWęzeł;
     }
 
-    public void setNastępnyWęzeł(Węzeł następnyWęzeł) {
+    public void setNastępnyWęzeł(Węzeł<T> następnyWęzeł) {
         this.następnyWęzeł = następnyWęzeł;
     }
 
-    public Węzeł getPoprzedniWęzeł() {
+    public Węzeł<T> getPoprzedniWęzeł() {
         return poprzedniWęzeł;
     }
 
-    public void setPoprzedniWęzeł(Węzeł poprzedniWęzeł) {
+    public void setPoprzedniWęzeł(Węzeł<T> poprzedniWęzeł) {
         this.poprzedniWęzeł = poprzedniWęzeł;
     }
 }
