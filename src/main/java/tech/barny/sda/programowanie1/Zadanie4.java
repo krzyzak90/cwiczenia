@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Zadanie4 {
 
-    public int[] averageTab(int[] arr){
+    public int[]averageTab(int[] arr){
         int avg=0;
         for (int i = 0; i < arr.length; i++) {
             avg+=arr[i];

@@ -4,13 +4,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class Zadanie4Test {
-
+class Zadanie6Test {
     @Test
     void odwroconaTab() {
-        int[] a = {1,2,3,8,9,10};
-        int [] b = {8,9,10};
-        int[] wynik = new Zadanie4().averageTab(a);
+        int[] a = {5, 3, 2, 8, 1, 4};
+        int [] b = {1, 3, 2, 8, 5, 4};
+        int[] wynik = new Zadanie6().sortuj(a);
         assertArrayEquals(wynik,b);
     }
 

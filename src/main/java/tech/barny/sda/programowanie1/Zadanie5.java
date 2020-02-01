@@ -1,7 +1,8 @@
 package tech.barny.sda.programowanie1;
 
 public class Zadanie5 {
-    public static void main(String[] args) {
+
+    public void choinka() {
 
         for (int i = 16, k = 0; i > 0 && k < 16; i--, k++) {
             for (int j = 0; j < i; j++) {
@@ -12,8 +13,8 @@ public class Zadanie5 {
             }
             for (int j = 1; j < k; j++) {
                 System.out.print("*");
+
             }
-            System.out.println();
         }
     }
 }
