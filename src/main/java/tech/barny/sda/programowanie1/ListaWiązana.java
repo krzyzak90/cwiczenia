@@ -11,21 +11,21 @@ public class ListaWiązana<T> implements Kolejka<T>, Stos<T> {
     }
 
     public void addLast(T el) {
-        Węzeł<T> węzeł = new Węzeł(el, null, null);
+        Węzeł<T> węzeł = new Węzeł<>(el, null, null);
 
         if (pierwszyWęzeł == null) {
             this.pierwszyWęzeł = węzeł;
             this.ostatniWęzeł = węzeł;
         } else {
             ostatniWęzeł.setNastępnyWęzeł(węzeł);
-            węzeł.setPoprzedniWęzeł(węzeł);
+            węzeł.setPoprzedniWęzeł(ostatniWęzeł);
             ostatniWęzeł = węzeł;
         }
         count++;
     }
 
     public void addFirst(T el) {
-        Węzeł<T> węzeł = new Węzeł(el, null, null);
+        Węzeł<T> węzeł = new Węzeł<>(el, null, null);
         if (pierwszyWęzeł == null) {
             this.pierwszyWęzeł = węzeł;
             this.ostatniWęzeł = węzeł;
@@ -50,8 +50,8 @@ public class ListaWiązana<T> implements Kolejka<T>, Stos<T> {
             for (int i = 0; i < index - 1; i++) {
                 poprzedniWęzeł = poprzedniWęzeł.getNastępnyWęzeł();
             }
-            Węzeł<T> następny = poprzedniWęzeł.getNastępnyWęzeł();
-            Węzeł<T> węzeł = new Węzeł(el, poprzedniWęzeł, następny);
+            Węzeł<T>następny = poprzedniWęzeł.getNastępnyWęzeł();
+            Węzeł<T>węzeł = new Węzeł<>(el, poprzedniWęzeł, następny);
             poprzedniWęzeł.setNastępnyWęzeł(węzeł);
             następny.setPoprzedniWęzeł(węzeł);
             count++;
@@ -92,6 +92,7 @@ public class ListaWiązana<T> implements Kolejka<T>, Stos<T> {
             Węzeł<T> węzeł = this.ostatniWęzeł;
             Węzeł<T> poprzedni = węzeł.getPoprzedniWęzeł();
             poprzedni.setNastępnyWęzeł(null);
+            this.ostatniWęzeł = poprzedni;
             count--;
             return węzeł.getZawartość();
         }
@@ -107,7 +108,7 @@ public class ListaWiązana<T> implements Kolejka<T>, Stos<T> {
         } else if (index == count - 1) {
             return removeLast();
         } else {
-            Węzeł<T> poprzedni = pierwszyWęzeł;
+            Węzeł<T>poprzedni = pierwszyWęzeł;
             for (int i = 0; i < index - 1; i++) {
                 poprzedni = poprzedni.getNastępnyWęzeł();
             }
@@ -147,4 +148,5 @@ public class ListaWiązana<T> implements Kolejka<T>, Stos<T> {
     public boolean isEmpty() {
         return count == 0;
     }
+
 }
