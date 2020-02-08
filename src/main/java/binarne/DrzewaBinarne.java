@@ -133,6 +133,45 @@ public class DrzewaBinarne {
         }
         return max;
     }
+    public boolean znajdzWszerz(Węzeł<Integer> węzeł, int x) {
+        LinkedList<Węzeł<Integer>> kolejka = new LinkedList<>();
+
+        kolejka.addLast(węzeł);
+        while (!kolejka.isEmpty()) {
+            Węzeł<Integer> obecny = kolejka.removeFirst();
+            if (obecny.getZawartość() == x) {
+                return true;
+            }
+            if (obecny.getLewy() != null) {
+                kolejka.addLast(obecny.getLewy());
+            }
+            if (obecny.getPrawy() != null) {
+                kolejka.addLast(obecny.getPrawy());
+            }
+        }
+        return false;
+    }
+
+    public boolean znajdzWgłąb(Węzeł<Integer> węzeł, int x) {
+        LinkedList<Węzeł<Integer>> stos = new LinkedList<>();
+
+        stos.push(węzeł);
+        while (!stos.isEmpty()) {
+            Węzeł<Integer> obecny = stos.pop();
+            if (obecny.getZawartość() == x) {
+                return true;
+            }
+            if (obecny.getLewy() != null) {
+                stos.push(obecny.getLewy());
+            }
+            if (obecny.getPrawy() != null) {
+                stos.push(obecny.getPrawy());
+            }
+        }
+        return false;
+    }
+
+
 
 }
 

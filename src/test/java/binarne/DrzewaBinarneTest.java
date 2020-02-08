@@ -148,5 +148,18 @@ class DrzewaBinarneTest {
 
         Assertions.assertEquals(wynikOczekiwany, wynikFaktyczny);
     }
+    @Test
+    void znajdzWgłąb() {
+        DrzewaBinarne dr = new DrzewaBinarne();
+        Węzeł<Integer> f = new Węzeł<>(99, null, null);
+        Węzeł<Integer> e = new Węzeł<>(24, null, null);
+        Węzeł<Integer> d = new Węzeł<>(66, null, null);
+        Węzeł<Integer> c = new Węzeł<>(8, f, null);
+        Węzeł<Integer> b = new Węzeł<>(100, d, e);
+        Węzeł<Integer> a = new Węzeł<>(1, c, null);
+        Węzeł<Integer> korzeń = new Węzeł<>(50, a, b);
+        boolean wynikFaktyczny = dr.znajdzWgłąb(korzeń, 1);
+        Assertions.assertTrue(wynikFaktyczny);
+    }
 
 }

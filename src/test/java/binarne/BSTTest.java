@@ -8,6 +8,21 @@ import static org.junit.jupiter.api.Assertions.*;
 class BSTTest {
 
     @Test
+    void jestNieObecne1() {
+        BST bst = new BST();
+        boolean faktycznyWynik = bst.jestObecne(0);
+        Assertions.assertFalse(faktycznyWynik);
+    }
+    @Test
+    void jestNieObecneRek1() {
+        BST bst = new BST();
+        bst.add(1);
+        boolean faktycznyWynik = bst.jestObecne(2);
+        Assertions.assertFalse(faktycznyWynik);
+    }
+
+
+    @Test
     void jestObecne1() {
         BST bst = new BST();
         bst.add(1);
@@ -52,4 +67,5 @@ class BSTTest {
         boolean faktycznyWynik = bst.jestObecne(21);
         Assertions.assertTrue(faktycznyWynik);
     }
+
 }
