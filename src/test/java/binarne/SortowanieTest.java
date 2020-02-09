@@ -22,4 +22,67 @@ class SortowanieTest {
         Assertions.assertFalse(wynik);
     }
 
+    @Test
+    void bubbleSort() {
+        int[] arr = {7, 6, 5, 4, 3, 2, 1, 0};
+        Sortowanie.bubbleSort(arr);
+
+        int[] oczekiwany = {0, 1, 2, 3, 4, 5, 6, 7};
+        Assertions.assertArrayEquals(oczekiwany, arr);
+    }
+
+    @Test
+    void bubbleSort2() {
+        int[] arr = {7, 6, 5, 4, 3, 2, 1, 0};
+        Sortowanie.bubbleSort2(arr);
+
+        int[] oczekiwany = {0, 1, 2, 3, 4, 5, 6, 7};
+        Assertions.assertArrayEquals(oczekiwany, arr);
+    }
+
+    @Test
+    void bubbleSort3() {
+        int[] arr = {7, 6, 5, 4, 3, 2, 1, 0};
+        Sortowanie.bubbleSort3(arr);
+
+        int[] oczekiwany = {0, 1, 2, 3, 4, 5, 6, 7};
+        Assertions.assertArrayEquals(oczekiwany, arr);
+    }
+
+    @Test
+    void bubbleSort4() {
+        int[] arr = {7, 6, 5, 4, 3, 2, 1, 0};
+        Sortowanie.bubbleSort4(arr);
+
+        int[] oczekiwany = {0, 1, 2, 3, 4, 5, 6, 7};
+        Assertions.assertArrayEquals(oczekiwany, arr);
+    }
+
+    @Test
+    void quickSort() {
+        int[] arr = {7, 6, 5, 4, 3, 2, 1, 0};
+        Sortowanie.quickSort(arr);
+
+        int[] oczekiwany = {0, 1, 2, 3, 4, 5, 6, 7};
+        Assertions.assertArrayEquals(oczekiwany, arr);
+    }
+
+    @Test
+    void quickSort2() {
+        int[] arr = {0, 1, 2, 3, 4, 5, 6, 7};
+        Sortowanie.quickSort(arr);
+
+        int[] oczekiwany = {0, 1, 2, 3, 4, 5, 6, 7};
+        Assertions.assertArrayEquals(oczekiwany, arr);
+    }
+
+    @Test
+    void quickSort3() {
+        int[] arr = {0, 1, 4, 6, 7, 5, 3, 2};
+        Sortowanie.quickSort(arr);
+
+        int[] oczekiwany = {0, 1, 2, 3, 4, 5, 6, 7};
+        Assertions.assertArrayEquals(oczekiwany, arr);
+    }
+
 }
